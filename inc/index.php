@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 	<?php
@@ -15,7 +15,7 @@
 						'calc' => 'calc.php'
 		);
 	?>
-	<table border="1" width="600">
+	<table border="1" width="600" class="main">
 		<tr><td colspan="2">header</td></tr>
 		<tr><td>
 		<table border="1" width="100%">
@@ -31,7 +31,7 @@
 		if (!empty($_GET)) {
 		include($_GET['inc'] . ".php");
 		 } else {
-		 	echo "Its index.php";
+		 	echo "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt at ab corrupti rem optio porro excepturi quos dolore nostrum possimus nam, vitae, voluptates ipsa consectetur suscipit fugiat praesentium. Repellendus, doloribus.";
 		 }
 		?>
 		</td>
