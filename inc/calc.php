@@ -1,8 +1,8 @@
-<form action="index.php?inc=calc" method="GET">
+<form action="index.php?inc=calc" method="POST">
 	<input type="submit" name="plus" value="+">
 	<input type="submit" name="minus" value="-">
 </form>
-<form action="index.php?inc=calc" method="GET">
+<form action="index.php?inc=calc" method="POST">
 	<input type="text" name="number1">
 	<select name="oper">
 		<option value="+">+</option>
@@ -12,22 +12,12 @@
 		<option value="%">деление с остатком</option>
 		<option value="**">корень</option>
 	</select>
-	<input type="text" name="number2">
+	<input type="text" name="number2" name="submit">
 	<br>
 	<?php
-	// error_reporting(0);
-	if (isset($_GET['plus'])) {
-		$p = $_GET['plus'];
-	} else {
-		$p = "";
-	}
-	if (isset($_GET['minus'])) {
-		$m = $_GET['minus'];
-	} else {
-		$m = "";
-	}
-	if ($_GET['plus']) {
-	echo "<input type=\"text\" name=\"number12\">
+	error_reporting(E_ALL);
+	if (isset($_POST['plus'])) {
+	$inputs = "<input type=\"text\" name=\"number12\">
 		<select name=\"oper2\">
 			<option value=\"+\">+</option>
 			<option value=\"-\">-</option>
@@ -36,9 +26,8 @@
 			<option value=\"%\">деление с остатком</option>
 			<option value=\"**\">корень</option>
 		</select>
-		<input type=\"text\" name=\"number22\"><br>"
-	.
-	"<input type=\"text\" name=\"number13\">
+		<input type=\"text\" name=\"number22\"><br>
+		<input type=\"text\" name=\"number13\">
 		<select name=\"oper3\">
 			<option value=\"+\">+</option>
 			<option value=\"-\">-</option>
@@ -47,9 +36,8 @@
 			<option value=\"%\">деление с остатком</option>
 			<option value=\"**\">корень</option>
 		</select>
-		<input type=\"text\" name=\"number23\"><br>"
-	.
-	"<input type=\"text\" name=\"number14\">
+		<input type=\"text\" name=\"number23\"><br>
+		<input type=\"text\" name=\"number14\">
 		<select name=\"oper4\">
 			<option value=\"+\">+</option>
 			<option value=\"-\">-</option>
@@ -60,55 +48,62 @@
 		</select>
 		<input type=\"text\" name=\"number24\">"
 		;
-	} 
+		setcookie("inputs", $inputs, time() + 3600, "/");
+		if (isset($_COOKIE['inputs'])) {
+			echo $_COOKIE['inputs'];
+		}
+	}
+	if (isset($_POST['minus'])) {
+		setcookie("inputs", "", time(), "/");
+	}
 	?>
 	<input type="submit" value="=">
 </form>
 <?php
-if (isset($_GET['number1'])) {
-$num1 = $_GET["number1"];
+if (isset($_POST['number1'])) {
+$num1 = $_POST["number1"];
 }
-if (isset($_GET['number2'])) {
-$num2 = $_GET["number2"];
+if (isset($_POST['number2'])) {
+$num2 = $_POST["number2"];
 }
-if (isset($_GET['oper'])) {
-$oper	= $_GET["oper"];
+if (isset($_POST['oper'])) {
+$oper	= $_POST["oper"];
 } else {
 	$oper = "";
 }
 $out = "";
-if (isset($_GET['number12'])) {
-$num12 = $_GET["number12"];
+if (isset($_POST['number12'])) {
+$num12 = $_POST["number12"];
 }
-if (isset($_GET['number22'])) {
-$num22 = $_GET["number22"];
+if (isset($_POST['number22'])) {
+$num22 = $_POST["number22"];
 }
-if (!empty($_GET["oper2"])) {
-$oper2	= $_GET["oper2"];
+if (!empty($_POST["oper2"])) {
+$oper2	= $_POST["oper2"];
 } else {
 	$oper2 = "";
 }
 $out2 = "";
-if (isset($_GET['number13'])) {
-$num13 = $_GET["number13"];
+if (isset($_POST['number13'])) {
+$num13 = $_POST["number13"];
 }
-if (isset($_GET['number23'])) {
-$num23 = $_GET["number23"];
+if (isset($_POST['number23'])) {
+$num23 = $_POST["number23"];
 }
-if (isset($_GET['oper3'])) {
-$oper3	= $_GET["oper3"];
+if (isset($_POST['oper3'])) {
+$oper3	= $_POST["oper3"];
 } else {
 	$oper3 = "";
 }
 $out3 = "";
-if (isset($_GET['number14'])) {
-$num14 = $_GET["number14"];
+if (isset($_POST['number14'])) {
+$num14 = $_POST["number14"];
 }
-if (isset($_GET['number24'])) {
-$num24 = $_GET["number24"];
+if (isset($_POST['number24'])) {
+$num24 = $_POST["number24"];
 }
-if (isset($_GET['oper4'])) {
-$oper4	= $_GET["oper4"];
+if (isset($_POST['oper4'])) {
+$oper4	= $_POST["oper4"];
 } else {
 	$oper4 = "";
 }
