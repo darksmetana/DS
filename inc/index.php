@@ -6,6 +6,23 @@
 	<link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+<?php 
+	if (empty($_COOKIE['login']) and empty($_COOKIE['username'])) {
+	echo '<form action="index.php" method="POST" id="log"><input type="text" name="username" required><br><input type="text" name="login" required><br><input type="submit" name="enter" value="Log In"></form>';
+	}
+	if (isset($_POST['login']) and isset($_POST['username'])) {
+			$username = $_POST['username'];
+			$login = $_POST['login'];
+			setcookie("login", "$login", time() + 3600, "/");
+			setcookie("username", "$username", time() + 3600, "/");
+			echo "<span class='txt'>Hello, $username!<br><form action='index.php' method='post'><input type='submit' name='logout' value='Log Out'></form></span>";
+	}
+	if (isset($_POST["logout"])) {
+				setcookie("login", "", time() - 3600, "/");
+				setcookie("username", "", time() - 3600, "/");
+	}
+	?>
+
 	<?php
 		$file = array(
 						'index' => 'index.php', 
