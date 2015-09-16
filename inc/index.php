@@ -23,6 +23,7 @@
 	if (isset($_POST["logout"])) {
 				setcookie("login", "", time() - 3600, "/");
 				setcookie("username", "", time() - 3600, "/");
+				header("location: /inc/index.php");
 	}			
 	?>
 
