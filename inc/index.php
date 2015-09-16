@@ -8,7 +8,7 @@
 <body>
 <?php 
 	if (empty($_COOKIE['login']) and empty($_COOKIE['username'])) {
-	echo '<form action="index.php" method="POST" id="log"><input type="text" name="username" required><br><input type="text" name="login" required><br><input type="submit" name="enter" value="Log In"></form>';
+	echo '<form action="index.php" method="POST" id="log"><input type="text" name="username" required placeholder="Set your name!"><br><input type="text" name="login" required placeholder="Set your login!"><br><input type="submit" name="enter" value="Log In"></form>';
 	}
 	if (isset($_POST['login']) and isset($_POST['username'])) {
 			$username = $_POST['username'];
