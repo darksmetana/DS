@@ -31,8 +31,8 @@ if (!empty($_POST)) {
 <?php
     for($i = 1; $i <= $rows; $i++) {
 ?>
-        <input name="num1" value="">
-        <select name="operation">
+        <input name="num1<?php echo $i; ?>" value="" style="width: 15%;">
+        <select name="operation<?php echo $i; ?>" style="width: 15%;">
 					<option value="+">+</option>
 					<option value="-">-</option>
 					<option value="*">*</option>
@@ -40,22 +40,17 @@ if (!empty($_POST)) {
 					<option value="%">деление с остатком</option>
 					<option value="**">корень</option>
 				</select>
-        <input name="num2" value=""><br />
+        <input name="num2<?php echo $i; ?>" value="" style="width: 15%;">
 <?php
-    }
-?>
-    <br />
-    <input type="submit" value="Send" name="send">
-</form>
-<?php 
-	if (isset($_POST['num1'])) {
-		$num1 = $_POST["num1"];
+	
+	if (isset($_POST["num1$i"])) {
+		$num1 = $_POST["num1$i"];
 	}
-	if (isset($_POST['num2'])) {
-		$num2 = $_POST["num2"];
+	if (isset($_POST["num2$i"])) {
+		$num2 = $_POST["num2$i"];
 	}
-	if (isset($_POST['operation'])) {
-		$oper	= $_POST["operation"];
+	if (isset($_POST["operation$i"])) {
+		$oper	= $_POST["operation$i"];
 	} else {
 		$oper = "";
 	}
@@ -74,8 +69,16 @@ if (!empty($_POST)) {
 		case '%': $res .= $num1 % $num2; break;
 		case '**': $res .= pow($num1, $num2); break;
 	};
-	if (isset($_POST['send'])) {
-		echo $res;
+	if (isset($_POST["send"])) {
+		echo " = <span style='border:1px solid black;padding: 2px;'>" . $res . "</span>";
 	}
+	echo "<br>";
+    }
+?>
+
+    <input type="submit" value="Посчитать" name="send">
+</form>
+<?php 
+	
 	
 ?>
