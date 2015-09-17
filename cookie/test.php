@@ -27,6 +27,34 @@
 			header("location: index.php");
 		}
 	}
+
+	if (isset($_POST['age'])) {
+		setcookie('age', mt_rand(10, 70), time() + 3600);
+	}
+
+	if (isset($_POST['age1'])) {
+		setcookie('age1', mt_rand(10, 70), time() + 10800);
+	}
+
+	if (isset($_POST['age2'])) {
+		setcookie('age2', mt_rand(10, 70), time() + 86400);
+	}
+
+	if (isset($_POST['age3'])) {
+		setcookie('age3', mt_rand(10, 70), time() + 31556926);
+	}
+
+	if (isset($_POST['age4'])) {
+		setcookie('age4', mt_rand(10, 70), time() + 315569260);
+	}
+
+	if (isset($_POST['age5'])) {
+		setcookie('age5', mt_rand(10, 70), mktime(0, 0, 0, date('m'), date('d') + 1, date('Y')));
+	}
+
+	if (isset($_POST['age6'])) {
+		setcookie('age6', mt_rand(10, 70), mktime(0, 0, 0, 1, 1, date('Y') + 1));
+	}
 ?>	
 </body>
 </html>
