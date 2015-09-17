@@ -18,7 +18,7 @@
 			header("location: /inc/index.php");
 	}
 	if (isset($_COOKIE['login']) or isset($_COOKIE['username'])) {
-			echo "<span class='txt'>Hello, $username!<br><form action='index.php' method='post'><input type='submit' name='logout' value='Log Out'></form></span>";
+			echo "<span class='txt'>Hello, " . $_COOKIE['username'] . "!<br><form action='index.php' method='post'><input type='submit' name='logout' value='Log Out'></form></span>";
 	}
 	if (isset($_POST["logout"])) {
 				setcookie("login", "", time() - 3600, "/");
