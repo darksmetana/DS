@@ -55,6 +55,20 @@
 	if (isset($_POST['age6'])) {
 		setcookie('age6', mt_rand(10, 70), mktime(0, 0, 0, 1, 1, date('Y') + 1));
 	}
+
+	
+
+	if (isset($_POST['set_cookie'])) {
+		setcookie("name", $_POST["set_name"]);
+	}
+
+	if (isset($_POST["edit_cookie"])) {
+		setcookie("name", $_POST["edit_name"]);
+	}
+
+	if (isset($_POST["delete_cookies"])) {
+		setcookie("name", "");
+	}
 ?>	
 </body>
 </html>
