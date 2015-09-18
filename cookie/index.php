@@ -19,7 +19,10 @@
 			<input type="text" name="country" required><br>
 			<input type="submit" value="Отправить">
 		</form>
-		<br><br>
+			<br>
+			<br>
+			<hr>
+			<br>
 		<form action="test.php" method="post">
 			<input type="submit" name="age" value="Установить куку на 1 час"><br>
 			<input type="submit" name="age1" value="Установить куку на 3 часа"><br>
@@ -29,6 +32,24 @@
 			<input type="submit" name="age5" value="Установить куку до конца текущего дня"><br>
 			<input type="submit" name="age6" value="Установить куку до конца текущего года">
 		</form>
+			<br>
+			<br>
+			<hr>
+			<br>
+		<form action="test.php" method="post">
+			<input type="text" name="set_name">
+			<input type="submit" name="set_cookie" value="Установить куку">
+			<br><br>
+			<input type="text" name="edit_name">
+			<input type="submit" name="edit_cookie" value="Редактировать куку">
+			<br><br>
+			<input type="submit" name="delete_cookies" value="Удалить куки">
+		</form>
+			<br>
+			<br>
+			<hr>
+			<br>
+		
 	</div>
 </body>
 </html>
