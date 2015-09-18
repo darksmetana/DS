@@ -69,6 +69,11 @@
 	if (isset($_POST["delete_cookies"])) {
 		setcookie("name", "");
 	}
+
+
+	 
+	
+
 ?>	
 </body>
 </html>
