@@ -68,7 +68,7 @@
 				width: 200px;
 				height: 200px;
 			}
-			img {
+			.img {
 				width: 100%;
 			}
 			.cart {
@@ -88,7 +88,7 @@
 
 	<div class="wrapper">
 		<div class="product">
-			<div class="p_img"><img src="/img/p-1.jpg" alt=""></div>
+			<div class="p_img"><img src="/img/p-1.jpg" alt="" class="img"></div>
 			<div class="p_price"><?php echo "Цена: " . $price1; ?></div>
 			<form action="index.php" method="get">
 				<input type="hidden" name="p_name1" value="Товар 1">Товар 1<br>
@@ -96,7 +96,7 @@
 			</form>
 		</div>
 		<div class="product">
-			<div class="p_img"><img src="/img/p-2.jpg" alt=""></div>
+			<div class="p_img"><img src="/img/p-2.jpg" alt="" class="img"></div>
 			<div class="p_price"><?php echo "Цена: " . $price2; ?></div>
 			<form action="index.php" method="get">
 				<input type="hidden" name="p_name2" value="Товар 2">Товар 2<br>
@@ -104,7 +104,7 @@
 			</form>
 		</div>
 		<div class="product">
-			<div class="p_img"><img src="/img/p-3.jpg" alt=""></div>
+			<div class="p_img"><img src="/img/p-3.jpg" alt="" class="img"></div>
 			<div class="p_price"><?php echo "Цена: " . $price3; ?></div>
 			<form action="index.php" method="get">
 				<input type="hidden" name="p_name3" value="Товар 3">Товар 3<br>
@@ -112,7 +112,7 @@
 			</form>
 		</div>
 		<div class="product">
-			<div class="p_img"><img src="/img/p-4.jpg" alt=""></div>
+			<div class="p_img"><img src="/img/p-4.jpg" alt="" class="img"></div>
 			<div class="p_price"><?php echo "Цена: " . $price4; ?></div>
 			<form action="index.php" method="get">
 				<input type="hidden" name="p_name4" value="Товар 4">Товар 4<br>
@@ -120,7 +120,7 @@
 			</form>
 		</div>
 		<div class="product">
-			<div class="p_img"><img src="/img/p-5.jpg" alt=""></div>
+			<div class="p_img"><img src="/img/p-5.jpg" alt="" class="img"></div>
 			<div class="p_price"><?php echo "Цена: " . $price5; ?></div>
 			<form action="index.php" method="get">
 				<input type="hidden" name="p_name5" value="Товар 5">Товар 5<br>
@@ -167,6 +167,25 @@
 		?>
 		</div>
 	</div>
+	<br>
+			<br>
+			<hr>
+			<br>
+			<?php
+				$banner = '<img src="../img/banner.jpg" alt="Banner" width="500px" height="200px">';
+				if (isset($_POST['hide_banner'])) {
+					setcookie("hide_banner", "hide_banner", time() + 2629743);
+					header("refresh:0");
+				}
+				if (isset($_COOKIE["hide_banner"])) {
+					unset($banner);
+				}
+				echo $banner;
+			?>
+				<form action="index.php" method="post">
+					<input type="submit" name="hide_banner" value="Не показывать баннер">
+				</form>
+			
 	</div>
 </body>
 </html>
