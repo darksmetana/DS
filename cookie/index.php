@@ -13,6 +13,9 @@
 	</style>
 </head>
 <body>
+	<?php 
+		error_reporting(E_ALL);
+	?>
 	<div class="form">
 		<form action="test.php" method="post">
 			Введите Вашу страну:<br>
@@ -178,7 +181,7 @@
 					header("refresh:0");
 				}
 				if (isset($_COOKIE["hide_banner"])) {
-					unset($banner);
+					$banner = "";
 				}
 				echo $banner;
 			?>
