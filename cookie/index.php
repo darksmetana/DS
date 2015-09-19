@@ -50,13 +50,13 @@
 			<hr>
 			<br>
 			<?php
-			session_start();
+			
 			?>
 		<style>
 			.wrapper {
 				position: relative;
 				max-width: 980px;
-				padding-top: 90px;
+				padding: 90px;
 				overflow: auto;
 			}
 			.product {
@@ -77,58 +77,95 @@
 				top: 10px;
 			}
 		</style>
-
+	<?php
+		$price1 = 110;
+		$price2 = 120;
+		$price3 = 130;
+		$price4 = 140;
+		$price5 = 150;
+	?>
 		
 
 	<div class="wrapper">
-	<div class="cart">
-		Корзина: <br>
-		<?php
-			echo $_POST['p_name'];
-		?>
-	</div>
-		
 		<div class="product">
 			<div class="p_img"><img src="/img/p-1.jpg" alt=""></div>
 			<div class="p_price"><?php echo "Цена: " . $price1; ?></div>
-			<form action="index.php" method="post">
-				<input type="hidden" name="p_name" value="Товар 1">Товар 1<br>
-				<input type="submit" name="addcart1" value="Добавить в корзину">
+			<form action="index.php" method="get">
+				<input type="hidden" name="p_name1" value="Товар 1">Товар 1<br>
+				<input type="submit" name="addtocart1" value="Добавить в корзину">
 			</form>
 		</div>
 		<div class="product">
 			<div class="p_img"><img src="/img/p-2.jpg" alt=""></div>
 			<div class="p_price"><?php echo "Цена: " . $price2; ?></div>
-			<form action="index.php" method="post">
-				<input type="hidden" name="p_name" value="Товар 2">Товар 2<br>
-				<input type="submit" name="addcart2" value="Добавить в корзину">
+			<form action="index.php" method="get">
+				<input type="hidden" name="p_name2" value="Товар 2">Товар 2<br>
+				<input type="submit" name="addtocart2" value="Добавить в корзину">
 			</form>
 		</div>
 		<div class="product">
 			<div class="p_img"><img src="/img/p-3.jpg" alt=""></div>
 			<div class="p_price"><?php echo "Цена: " . $price3; ?></div>
-			<form action="index.php" method="post">
-				<input type="hidden" name="p_name" value="Товар 3">Товар 3<br>
-				<input type="submit" name="addcart3" value="Добавить в корзину">
+			<form action="index.php" method="get">
+				<input type="hidden" name="p_name3" value="Товар 3">Товар 3<br>
+				<input type="submit" name="addtocart3" value="Добавить в корзину">
 			</form>
 		</div>
 		<div class="product">
 			<div class="p_img"><img src="/img/p-4.jpg" alt=""></div>
 			<div class="p_price"><?php echo "Цена: " . $price4; ?></div>
-			<form action="index.php" method="post">
-				<input type="hidden" name="p_name" value="Товар 4">Товар 4<br>
-				<input type="submit" name="addcart4" value="Добавить в корзину">
+			<form action="index.php" method="get">
+				<input type="hidden" name="p_name4" value="Товар 4">Товар 4<br>
+				<input type="submit" name="addtocart4" value="Добавить в корзину">
 			</form>
 		</div>
 		<div class="product">
 			<div class="p_img"><img src="/img/p-5.jpg" alt=""></div>
 			<div class="p_price"><?php echo "Цена: " . $price5; ?></div>
-			<form action="index.php" method="post">
-				<input type="hidden" name="p_name" value="Товар 5">Товар 5<br>
-				<input type="submit" name="addcart5" value="Добавить в корзину">
+			<form action="index.php" method="get">
+				<input type="hidden" name="p_name5" value="Товар 5">Товар 5<br>
+				<input type="submit" name="addtocart5" value="Добавить в корзину">
 			</form>
 		</div>
-		
+		<div class="cart">
+		Корзина: <br>
+		<?php
+			session_start();
+			if (isset($_GET['addtocart1'])) {	
+				$_SESSION['p_name1'] = $_GET['p_name1'];
+				$_SESSION['price1'] = $price1;
+			} 
+			if (isset($_GET['addtocart2'])) {
+				$_SESSION['p_name2'] = $_GET['p_name2'];
+				$_SESSION['price2'] = $price2;
+			}
+			if (isset($_GET['addtocart3'])) {
+				$_SESSION['p_name3'] = $_GET['p_name3'];
+				$_SESSION['price3'] = $price3;
+			}
+			if (isset($_GET['addtocart4'])) {
+				$_SESSION['p_name4'] = $_GET['p_name4'];
+				$_SESSION['price4'] = $price4;
+			}
+			if (isset($_GET['addtocart5'])) {
+				$_SESSION['p_name5'] = $_GET['p_name5'];
+				$_SESSION['price5'] = $price5;
+			}
+			if (empty($_GET)) {
+				echo "В корзине нет товаров";
+			} else {
+				foreach ($_SESSION as $p) {
+					echo $p . " ";
+					if ($p == $_SESSION['price1'] or $_SESSION['price2'] or $_SESSION['price3'] or $_SESSION['price4'] or $_SESSION['price5']) {
+					echo "грн<br>";
+				}
+				}
+				
+				$sum += $_SESSION['price1'] + $_SESSION['price2'] + $_SESSION['price3'] + $_SESSION['price4'] + $_SESSION['price5'];
+				echo "На сумму: " . $sum;
+			}
+		?>
+		</div>
 	</div>
 	</div>
 </body>
